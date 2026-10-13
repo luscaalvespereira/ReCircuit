@@ -91,14 +91,14 @@ npx http-server -p 8080
 # Or: python -m http.server 8080
 
 # Open in your browser
-http://localhost:8080
+https://temporary-rushing-jasper-ip6tuk6.vercel.app
 ```
 
 ---
 
 ## 🧪 Judge Walkthrough (60-Second Test)
 
-1. Open `http://localhost:8080` (or the live demo link).
+1. Open `https://temporary-rushing-jasper-ip6tuk6.vercel.app` (or the live demo link).
 2. On the **Discover** tab, swipe right on the **DDR3 SO-DIMM RAM** or **GTX 750 Ti GPU** by clicking the green heart or dragging the card to the right.
 3. In the **"It's a Match!"** dialog, click **View Match**.
 4. Click **Connect Wallet** in the top bar and select **Demo Wallet (Devnet)**. A temporary keypair is generated and displayed instantly.
