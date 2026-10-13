@@ -1,0 +1,81 @@
+/* ReCircuit — sample data (all people & places are fictional demo data) */
+window.RC_DATA = {
+  parts: [
+    { id: 'p1', title: 'DDR3 8GB SO-DIMM ×2', cat: 'ram', cond: 'tested', condLabel: 'Tested · working', weight: 0.04, hazard: false, price: 'Free',
+      specs: ['DDR3-1600', '2 × 4GB', 'Pulled from office laptops'], collector: 'Seu Zé', area: 'Casa Amarela', km: 1.2 },
+    { id: 'p2', title: 'ATX Power Supply 450W', cat: 'psu', cond: 'tested', condLabel: 'Tested · fan noisy', weight: 1.1, hazard: false, price: 'R$ 10',
+      specs: ['80+ Bronze', '24-pin + 6-pin PCIe', 'Fan needs oil'], collector: 'Dona Marta', area: 'Boa Vista', km: 2.4 },
+    { id: 'p3', title: 'GeForce GTX 750 Ti 2GB', cat: 'gpu', cond: 'tested', condLabel: 'Tested · needs repaste', weight: 0.4, hazard: false, price: 'Pay what you can',
+      specs: ['No external power', 'HDMI + DVI', 'Great for light ML / video'], collector: 'Cooperativa Maré', area: 'Santo Amaro', km: 3.1 },
+    { id: 'p4', title: 'Intel Core i5-3470 CPU', cat: 'cpu', cond: 'tested', condLabel: 'Tested · working', weight: 0.03, hazard: false, price: 'Free',
+      specs: ['LGA1155', '4 cores · 3.2GHz', 'From a decommissioned office PC'], collector: 'Seu Zé', area: 'Casa Amarela', km: 1.2 },
+    { id: 'p5', title: '500GB 2.5" HDD', cat: 'storage', cond: 'tested', condLabel: 'SMART healthy', weight: 0.1, hazard: false, price: 'Free',
+      specs: ['SATA III', '8,900 power-on hours', 'Securely wiped'], collector: 'Júlio', area: 'Várzea', km: 6.8 },
+    { id: 'p6', title: '15.6" LED laptop panel + cable', cat: 'screen', cond: 'untested', condLabel: 'Untested', weight: 0.35, hazard: false, price: 'Free',
+      specs: ['1366×768 eDP', 'No cracks visible', 'Backlight type: LED (no mercury)'], collector: 'Dona Marta', area: 'Boa Vista', km: 2.4 },
+    { id: 'p7', title: '18650 Li-ion cells ×6 (recovered)', cat: 'battery', cond: 'tested', condLabel: 'Capacity tested · 78%', weight: 0.27, hazard: true, price: 'R$ 15',
+      specs: ['Graded & sorted', 'Terminals taped for transport', '⚠ Hazard: handle with BMS only'], collector: 'Cooperativa Maré', area: 'Santo Amaro', km: 3.1 },
+    { id: 'p8', title: 'H61 Motherboard (LGA1155)', cat: 'board', cond: 'tested', condLabel: 'Boots · no IO shield', weight: 0.6, hazard: false, price: 'Pay what you can',
+      specs: ['2 × DDR3 slots', 'VGA + HDMI', 'Capacitors checked'], collector: 'Júlio', area: 'Várzea', km: 6.8 },
+    { id: 'p9', title: '120mm case fans ×4', cat: 'fan', cond: 'tested', condLabel: 'Tested · quiet', weight: 0.4, hazard: false, price: 'Free',
+      specs: ['12V 3-pin', 'Good bearings', 'Two with RGB'], collector: 'Seu Zé', area: 'Casa Amarela', km: 1.2 },
+    { id: 'p10', title: 'SATA / PSU / VGA cable lot', cat: 'cable', cond: 'tested', condLabel: 'Tested', weight: 0.8, hazard: false, price: 'Free',
+      specs: ['≈ 20 cables', 'No frayed insulation', 'Mixed lengths'], collector: 'Dona Marta', area: 'Boa Vista', km: 2.4 },
+    { id: 'p11', title: 'Intel 10Gb SFP+ network card', cat: 'network', cond: 'tested', condLabel: 'Link up · tested', weight: 0.2, hazard: false, price: 'R$ 30',
+      specs: ['PCIe x8', 'From a data-center decommission', 'Great for home labs'], collector: 'Cooperativa Maré', area: 'Santo Amaro', km: 3.1 },
+    { id: 'p12', title: 'Arduino Uno R3 clone', cat: 'board', cond: 'tested', condLabel: 'Blink test passed', weight: 0.05, hazard: false, price: 'Free',
+      specs: ['ATmega328P', 'USB cable included', 'Ideal for classrooms'], collector: 'Júlio', area: 'Várzea', km: 6.8 }
+  ],
+
+  wants: [
+    { id: 'w1', title: 'DDR3 RAM for 10 school-lab PCs', cat: 'ram', maker: 'Marina', role: 'Lab technician · public school', area: 'Derby', km: 2.0, budget: 'Budget: R$ 0',
+      story: 'Our computer lab is stuck at 2GB. 4–8GB would bring 10 PCs back to life for 300 students.' },
+    { id: 'w2', title: '18650 cells for a solar sensor network', cat: 'battery', maker: 'Diego', role: 'Maker · urban farming', area: 'Torre', km: 3.5, budget: 'Budget: R$ 20',
+      story: 'Building low-power soil sensors for community gardens. I can test and balance cells myself.' },
+    { id: 'w3', title: 'ATX PSUs (300W+) for a community cyber café', cat: 'psu', maker: 'Coletivo Maré Digital', role: 'Community collective', area: 'Alto José do Pinho', km: 4.2, budget: 'Budget: R$ 0',
+      story: 'We are assembling 6 refurbished PCs for free internet access in our neighbourhood.' },
+    { id: 'w4', title: 'Any working GPU for ML coursework', cat: 'gpu', maker: 'Aline', role: 'CS student', area: 'Cidade Universitária', km: 5.6, budget: 'Budget: R$ 40',
+      story: 'First-gen student training small models. A GTX 750 Ti-class card would unlock my whole semester.' },
+    { id: 'w5', title: 'LGA1155 board + i5 to revive a family PC', cat: 'board', maker: 'Rafael', role: 'Self-taught builder', area: 'Ibura', km: 7.9, budget: 'Budget: R$ 30',
+      story: 'My mom\u2019s PC died. I am learning to repair — I will document the build for others.' },
+    { id: 'w6', title: 'Arduino / dev boards for a robotics club', cat: 'board', maker: 'Clube Faísca', role: 'Robotics club', area: 'Boa Viagem', km: 6.1, budget: 'Budget: R$ 0',
+      story: 'Teenagers building line-following robots with whatever parts they can find.' }
+  ],
+
+  hazards: [
+    { id: 'liion', name: 'Lithium-ion / LiPo batteries', icon: '🔋', risk: 'Fire & toxic fumes', level: 'critical', pointsPerKg: 40,
+      why: 'Punctured, crushed or short-circuited cells can enter thermal runaway: fire, smoke and toxic gases. They also leak heavy-metal electrolytes.',
+      do: ['Tape over terminals with non-conductive tape', 'Store each pack separately in a non-flammable container (metal tin, dry sand)', 'Keep dry, cool and away from direct sun', 'Isolate swollen or damaged packs immediately and tell the drop-off point'],
+      dont: ['Never puncture, crush, open or burn', 'Never throw in household or regular recycling trash', 'Never stack bare cells in a pocket with keys or coins'] },
+    { id: 'leadacid', name: 'Lead-acid batteries (UPS / car)', icon: '⚡', risk: 'Lead & sulfuric acid', level: 'critical', pointsPerKg: 15,
+      why: 'Contain lead and corrosive acid. Improper breaking contaminates soil and water, and exposure is a serious health hazard.',
+      do: ['Carry upright, never tilted', 'Wear gloves and eye protection', 'Hand over intact to a certified recycler'],
+      dont: ['Never open or drain the battery', 'Never leave it on bare soil'] },
+    { id: 'crt', name: 'CRT monitors & TVs', icon: '📺', risk: 'Lead glass & implosion', level: 'high', pointsPerKg: 6,
+      why: 'CRT glass contains lead and the tube is under vacuum. Breaking it can cause implosion and release toxic dust.',
+      do: ['Move gently, support from below', 'Keep the glass tube intact', 'Wrap in blanket or cardboard for transport'],
+      dont: ['Never smash to “get the copper”', 'Never carry by the neck of the tube'] },
+    { id: 'capacitor', name: 'Large capacitors (PSU, CRT, microwave)', icon: '⚠️', risk: 'Stored electric charge', level: 'high', pointsPerKg: 8,
+      why: 'Big electrolytic and high-voltage capacitors can keep a dangerous charge even after unplugging.',
+      do: ['Let equipment sit unplugged', 'Discharge using a proper resistor, never a screwdriver', 'Label “charged” if unsure'],
+      dont: ['Never open microwaves or CRTs without training', 'Never short-circuit terminals'] },
+    { id: 'mercury', name: 'CCFL backlights & fluorescent tubes', icon: '🧪', risk: 'Mercury vapour', level: 'high', pointsPerKg: 12,
+      why: 'Older LCD screens and scanners use tiny fluorescent lamps containing mercury.',
+      do: ['Remove carefully without breaking', 'Store in rigid box padded with paper', 'Ventilate the area if a lamp breaks'],
+      dont: ['Never use a vacuum on broken tubes', 'Never put in bins'] },
+    { id: 'button', name: 'Button cells (CMOS / watches)', icon: '🪙', risk: 'Heavy metals & ingestion', level: 'medium', pointsPerKg: 30,
+      why: 'Small coin cells may contain mercury, silver or lithium, and are dangerous if swallowed by children or pets.',
+      do: ['Tape and bag them together', 'Keep away from children and pets'],
+      dont: ['Never leave loose in a drawer or bag'] },
+    { id: 'plastics', name: 'Brominated plastics & cable PVC', icon: '🔥', risk: 'Toxic smoke if burned', level: 'medium', pointsPerKg: 3,
+      why: 'Burning cables and casings to recover metal releases dioxins and furans — the biggest health risk for collectors.',
+      do: ['Strip cables mechanically', 'Sell plastic and cable to certified buyers'],
+      dont: ['Never burn cables or casings', 'Never work downwind of smoke'] }
+  ],
+
+  dropoffs: [
+    { id: 'd1', name: 'Certified e-waste drop-off · Boa Vista (sample)', km: 2.1, accepts: ['liion', 'leadacid', 'button', 'capacitor', 'plastics'], hours: 'Mon–Sat 8–17h' },
+    { id: 'd2', name: 'Recycling cooperative hub · Santo Amaro (sample)', km: 3.4, accepts: ['liion', 'crt', 'plastics', 'mercury', 'capacitor'], hours: 'Mon–Fri 7–16h' },
+    { id: 'd3', name: 'Retailer reverse-logistics point · Recife Centro (sample)', km: 4.0, accepts: ['liion', 'button', 'leadacid'], hours: 'Daily 10–20h' }
+  ]
+};

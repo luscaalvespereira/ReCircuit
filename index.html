@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReCircuit — Swipe-to-match e-waste parts with makers. Dispose of hazards safely.</title>
+  <meta name="description" content="ReCircuit connects e-waste collectors with makers who need working electronic parts, and gives collectors a safe, verifiable way to dispose of hazardous components — with proofs anchored on Solana." />
+  <meta property="og:title" content="ReCircuit" />
+  <meta property="og:description" content="Tinder for e-waste: match salvaged parts with makers, dispose of batteries safely, prove it on Solana." />
+  <meta property="og:image" content="assets/banner.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1512'/%3E%3Cpath d='M18 34a14 14 0 0 1 24-10M46 30a14 14 0 0 1-24 10' stroke='%23b6ff5c' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0d1f1a"/><path d="M18 34a14 14 0 0 1 24-10M46 30a14 14 0 0 1-24 10" stroke="url(#g)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M42 16v9h-9M22 48v-9h9" stroke="#b6ff5c" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6ff5c"/><stop offset="1" stop-color="#2ee6c5"/></linearGradient></defs></svg>
+      <div>
+        <h1>ReCircuit</h1>
+        <p>Rescue parts. Dispose safely.</p>
+      </div>
+    </div>
+    <div class="role-switch" role="tablist" aria-label="Choose your role">
+      <button id="role-maker" class="role-btn" role="tab" data-role="maker">🛠️ I'm a Maker</button>
+      <button id="role-collector" class="role-btn" role="tab" data-role="collector">♻️ I'm a Collector</button>
+    </div>
+    <button id="btn-wallet" class="btn btn-wallet">Connect wallet</button>
+  </header>
+
+  <main>
+    <!-- DISCOVER -->
+    <section id="view-discover" class="view active" aria-labelledby="discover-title">
+      <div class="view-head">
+        <h2 id="discover-title">Discover</h2>
+        <p id="discover-sub"></p>
+      </div>
+      <div class="deck-wrap">
+        <div id="deck" class="deck" aria-live="polite"></div>
+        <div class="deck-actions">
+          <button id="btn-nope" class="round nope" aria-label="Pass">✕</button>
+          <button id="btn-info" class="round info" aria-label="Safety info">i</button>
+          <button id="btn-like" class="round like" aria-label="Match">♥</button>
+        </div>
+        <p class="hint">Drag the card · or use ← → keys</p>
+      </div>
+    </section>
+
+    <!-- MATCHES -->
+    <section id="view-matches" class="view" aria-labelledby="matches-title">
+      <div class="view-head">
+        <h2 id="matches-title">Matches</h2>
+        <p>Arrange a safe, public pickup — then seal the exchange on-chain.</p>
+      </div>
+      <div id="matches-list" class="list"></div>
+    </section>
+
+    <!-- LIST -->
+    <section id="view-post" class="view" aria-labelledby="post-title">
+      <div class="view-head">
+        <h2 id="post-title">Post</h2>
+        <p id="post-sub"></p>
+      </div>
+      <form id="post-form" class="panel form">
+        <label>Title<input id="post-title-input" required maxlength="60" placeholder="e.g. DDR4 16GB laptop RAM" /></label>
+        <div class="row">
+          <label>Category
+            <select id="post-cat">
+              <option value="ram">RAM</option><option value="cpu">CPU</option><option value="gpu">GPU</option>
+              <option value="psu">Power supply</option><option value="storage">Storage</option><option value="board">Boards</option>
+              <option value="screen">Screens</option><option value="battery">Batteries</option><option value="fan">Fans</option>
+              <option value="cable">Cables</option><option value="network">Network</option>
+            </select>
+          </label>
+          <label id="post-cond-wrap">Condition
+            <select id="post-cond"><option value="tested">Tested · working</option><option value="untested">Untested</option><option value="parts">For parts</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label>Weight (kg)<input id="post-weight" type="number" step="0.01" min="0.01" value="0.2" /></label>
+          <label>Price<input id="post-price" value="Free" /></label>
+        </div>
+        <label class="check"><input id="post-hazard" type="checkbox" /> This contains a hazardous component (battery, capacitor…)</label>
+        <button class="btn btn-primary" type="submit" id="post-submit">Publish</button>
+      </form>
+      <h3 class="section-title">My posts</h3>
+      <div id="my-posts" class="list"></div>
+    </section>
+
+    <!-- SAFE DISPOSAL -->
+    <section id="view-safety" class="view" aria-labelledby="safety-title">
+      <div class="view-head">
+        <h2 id="safety-title">Safe Disposal</h2>
+        <p>Know what is dangerous, how to handle it, where it goes — and get a verifiable receipt.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3 class="section-title">Hazard guide</h3>
+          <div id="hazard-list" class="accordion"></div>
+        </div>
+        <div>
+          <h3 class="section-title">Disposal receipt</h3>
+          <form id="disp-form" class="panel form">
+            <label>Hazard type<select id="disp-type"></select></label>
+            <div class="row">
+              <label>Quantity<input id="disp-qty" type="number" min="1" value="3" /></label>
+              <label>Weight (kg)<input id="disp-kg" type="number" step="0.1" min="0.1" value="1.2" /></label>
+            </div>
+            <label>Drop-off point<select id="disp-point"></select></label>
+            <fieldset class="checklist" id="disp-checks"></fieldset>
+            <button class="btn btn-primary" type="submit" id="disp-submit" disabled>Generate receipt</button>
+          </form>
+          <div id="receipts" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section id="view-impact" class="view" aria-labelledby="impact-title">
+      <div class="view-head">
+        <h2 id="impact-title">Impact</h2>
+        <p>Every rescued part and safe disposal is counted — and provable.</p>
+      </div>
+      <div class="stats" id="stats"></div>
+      <h3 class="section-title">On-chain proofs <span class="muted">(Solana Devnet)</span></h3>
+      <div id="proofs" class="list"></div>
+      <p class="fine">Demo uses sample data. Anchors are written to Solana Devnet with the Memo program — no personal data is stored on-chain, only a hash and counts.</p>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <button class="tab active" data-view="discover" id="tab-discover"><span>🔥</span>Discover</button>
+    <button class="tab" data-view="matches" id="tab-matches"><span>💚</span>Matches<b id="badge-matches" class="badge" hidden>0</b></button>
+    <button class="tab" data-view="post" id="tab-post"><span>➕</span>Post</button>
+    <button class="tab" data-view="safety" id="tab-safety"><span>🛡️</span>Safe Disposal</button>
+    <button class="tab" data-view="impact" id="tab-impact"><span>🌍</span>Impact</button>
+  </nav>
+
+  <!-- MODALS -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" id="modal-card"></div>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="https://unpkg.com/@solana/web3.js@1.95.3/lib/index.iife.min.js"></script>
+  <script src="data.js"></script>
+  <script src="solana.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
